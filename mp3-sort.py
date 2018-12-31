@@ -25,22 +25,25 @@ def GetAlbumName(filename):
 
 # Return all files in the folder that has the specified extension
 def GetAllFilesFromFolder(folderPath,extension):
-	return (os.path.join(folderPath,file) for file in os.listdir(folderPath) if file.endswith('.' + extension))
+	return (os.path.join(folderPath,file.lower()) for file in os.listdir(folderPath) if file.lower().endswith('.' + extension))
 
 # Sort files into Album/Artist Names
 def Sort_Mp3(folderPath):
 	files = GetAllFilesFromFolder(folderPath,"mp3")
 	for file in files:
 		albumName = GetAlbumName(file)
-		
-		filename = "Unsorted"
-		if re.match(r'[\\/:"*?<>|]+', albumName):
-			filename = os.path.basename(file)
-			print(filename)
-		albumFolder = os.path.join(folderPath, filename)
+		foldername = "Unsorted"
+		re2 =  re.compile(r"^[^<>/{}[\]~`\.]*$");
+		if re2.match(albumName):
+			print("Found match %s" %albumName)
+			foldername = albumName
+		albumFolder = os.path.join(folderPath, foldername)
 		if not os.path.exists(albumFolder):
 			os.makedirs(albumFolder)
-		shutil.move(file,os.path.join(albumFolder,filename))
+		
+		fileName = os.path.basename(file)
+		shutil.move(file,os.path.join(albumFolder,fileName))
+		print(os.path.join(albumFolder,fileName))
 	
 
 Sort_Mp3(arg)
