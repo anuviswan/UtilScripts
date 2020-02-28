@@ -1,8 +1,4 @@
-from eyed3 import id3
-import os
 import sys
-import shutil
-import re
 
 def DisplayHelp():
 	print("xml2dir allows to generate Folder structure as defined in the given Xml")
@@ -16,5 +12,7 @@ def DisplayHelp():
 if len(sys.argv) == 1:
 	DisplayHelp()
 
-print(sys.argv)
+if sys.argv[1] == "g" and len(sys.argv)==3 :
+	print("filePath : " + sys.argv[2])
 
+print(sys.argv)
