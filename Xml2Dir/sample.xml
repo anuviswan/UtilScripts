@@ -1,0 +1,6 @@
+<directory name="Root" rootPath=".">
+    <directory name="Source">
+        <directory name="WebApi"/>
+    </directory>
+    <directory name="Documents"/>
+</directory>
