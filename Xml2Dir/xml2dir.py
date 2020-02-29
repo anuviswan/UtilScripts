@@ -20,7 +20,6 @@ if len(sys.argv) == 2:
 
 
 if sys.argv[1] == "g" and len(sys.argv)==3 :
-	print("Processing File : " + sys.argv[2])
 	dirCreator = DirectoryCreator(sys.argv[2])
 	dirCreator.ProcessXmlFile()
 
