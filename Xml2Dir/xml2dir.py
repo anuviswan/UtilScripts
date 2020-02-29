@@ -24,5 +24,3 @@ if sys.argv[1] == "g" and len(sys.argv)==3 :
 	dirCreator = DirectoryCreator(sys.argv[2])
 	dirCreator.ProcessXmlFile()
 
-
-print(sys.argv)

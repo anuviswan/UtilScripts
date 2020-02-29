@@ -9,10 +9,14 @@ class DirectoryCreator:
 		return bool(os.path.exists(filePath))
 
 	def ProcessXmlFile(self):
+		print("Processing File: " + self.FilePath + "....")
+
 		if(not self.ValidateFilePath(self.FilePath)):
 			print("Invalid File Path")
 			exit(0)
 		
-		print("Processing File"+self.FilePath)
+		print("Validated File Path....")
+		
+
 
 
