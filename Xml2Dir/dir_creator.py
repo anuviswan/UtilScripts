@@ -9,7 +9,7 @@ class DirectoryCreator:
 	def ValidateFilePath(self,filePath):
 		return bool(os.path.exists(filePath)) 
 
-	def ReadXmlFile(self,filePath):
+	def GenerateFolderStructure(self,filePath):
 		tree = ET.parse(filePath)
 		root = tree.getroot()
 		rootDir = root.attrib["rootPath"]
@@ -22,7 +22,6 @@ class DirectoryCreator:
 		for element in node.getchildren():
 			name = element.attrib["name"]
 			path = os.path.join(currentPath,name)
-			print(element.tag.title())
 			if(element.tag == "file"):
 				self.GenerateFile(path)
 			else:
@@ -32,10 +31,12 @@ class DirectoryCreator:
 	def GenerateDirectory(self,path):
 		if not os.path.isdir(path):
 			os.mkdir(path)
+			print("Created directory : " + path)
 
 	def GenerateFile(self,path):
 		if not os.path.isfile(path):
 			with open(path,'w') as file:
+				print("Created file : " + path)
 				pass
 
 	@property
@@ -55,7 +56,9 @@ class DirectoryCreator:
 			exit(0)
 		
 		print("Validated File Path....")
-		self.ReadXmlFile(self.FilePath)
+		print("Generating folder structure....")
+		self.GenerateFolderStructure(self.FilePath)
+		print("Completed generating folder structure....")
 		
 
 
