@@ -1,6 +1,9 @@
 <directory name="Root" rootPath=".">
+    <file name="readme.md"/>
     <directory name="Source">
-        <directory name="WebApi"/>
+        <directory name="WebApi">
+            <file name="api.txt"/>
+        </directory>
     </directory>
     <directory name="Documents"/>
 </directory>

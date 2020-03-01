@@ -20,15 +20,23 @@ class DirectoryCreator:
 
 	def ReadXmlNode(self,node,currentPath):
 		for element in node.getchildren():
-			dirName = element.attrib["name"]
-			dirPath = os.path.join(currentPath,dirName)
-			print(dirPath)
-			self.GenerateDirectory(dirPath)
-			self.ReadXmlNode(element,dirPath)
+			name = element.attrib["name"]
+			path = os.path.join(currentPath,name)
+			print(element.tag.title())
+			if(element.tag == "file"):
+				self.GenerateFile(path)
+			else:
+				self.GenerateDirectory(path)
+				self.ReadXmlNode(element,path)
 			
 	def GenerateDirectory(self,path):
-		os.mkdir(path)
+		if not os.path.isdir(path):
+			os.mkdir(path)
 
+	def GenerateFile(self,path):
+		if not os.path.isfile(path):
+			with open(path,'w') as file:
+				pass
 
 	@property
 	def IsSupportedFileType(self):

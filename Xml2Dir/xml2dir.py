@@ -1,6 +1,7 @@
 import sys
 import os
 from dir_creator import DirectoryCreator
+
 def DisplayHelp():
 	print("xml2dir allows to generate Folder structure as defined in the given Xml")
 	print("xml2dir [h]	[g path]")
